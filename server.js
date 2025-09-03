@@ -111,9 +111,11 @@ if (process.env.SWAGGER_ON === true) {
     })
 }
 
-app.listen(process.env.PORT, async () => {
-    console.log(`\n\n API RojoTu Corriendo en \n\n PORT: ${process.env.PORT}\n ACCESS URL: ${process.env.HOST}:${process.env.PORT}\n\n`)
-})
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`\n\n API RojoTu Corriendo en \n\n PORT: ${PORT}\n`);
+});
 
 
 module.exports = app;
