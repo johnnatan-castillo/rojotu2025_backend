@@ -11,13 +11,11 @@ const sqlInjectionPattern = /(\b(SELECT|INSERT|DELETE|UPDATE|DROP|UNION|--|;|'|"
 const allowlist = [process.env.CORS_ROJOTU, process.env.CORS_UAT, process.env.CORS_LOCAL, process.env.LOCAL_FRONT]
 
 db.sequelize.sync()
-    .then(() => {
-        console.log("\nBase de datos: \nEstatus: OK\nMensaje: Todo bien.");
-    })
-    .catch(error => {
-        console.error("Base de datos: \nEstatus: Error\nMensaje:", error);
-        // 👇 Importante: NO hacemos throw ni process.exit()
-    });
+  .then(() => console.log("DB OK"))
+  .catch(error => {
+    console.error("DB Error:", error);
+    // 👇 NO tumbar el proceso
+  });
 
 var corsOptionsDelegate = function (req, callback) {
     var corsOptions;
@@ -124,5 +122,6 @@ app.listen(PORT, "0.0.0.0", () => {
 
 
 module.exports = app;
+
 
 
